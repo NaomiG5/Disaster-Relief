@@ -1,0 +1,122 @@
+﻿@model Disaster_Relief.Models.GoodsDonations
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    input {
+        background-color: #da8601;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    a {
+        color: #da8601;
+        background-color: transparent;
+    }
+
+    .hero-wrap {
+        width: 100%;
+        height: 100%;
+        position: inherit;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        position: relative;
+    }
+
+        .hero-wrap .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            content: '';
+            opacity: .3;
+            background: #f1453d;
+        }
+
+        .hero-wrap.hero-wrap-2 {
+            height: 100px;
+        }
+
+            .hero-wrap.hero-wrap-2 .slider-text {
+                height: 100px;
+            }
+
+                .hero-wrap.hero-wrap-2 .slider-text .bread {
+                    font-weight: 900;
+                    color: #983275;
+                }
+
+                .hero-wrap.hero-wrap-2 .slider-text .breadcrumbs {
+                    text-transform: uppercase;
+                    font-size: 13px;
+                    letter-spacing: 1px;
+                }
+
+                    .hero-wrap.hero-wrap-2 .slider-text .breadcrumbs span {
+                        color: #fff;
+                        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+                    }
+
+                        .hero-wrap.hero-wrap-2 .slider-text .breadcrumbs span a {
+                            color: #fff;
+                        }
+
+</style>
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/Images/BG Picture.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-2 bread" style="text-align:center;">Edit Donations</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr />
+
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="DonationID" />
+    <div class="form-group">
+        @Html.Label("Donar Name")
+        <input asp-for="DonationName" class="form-control" />
+        <span asp-validation-for="DonationName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Quantity" class="control-label"></label>
+        <input asp-for="Quantity" class="form-control" />
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        @Html.Label("Donation Date")
+        <input asp-for="DonationDate" class="form-control" />
+        <span asp-validation-for="DonationDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        @Html.Label("Category")
+        <input asp-for="Catagory" class="form-control" />
+        <span asp-validation-for="Catagory" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

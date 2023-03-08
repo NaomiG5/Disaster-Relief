@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Disaster_Relief", "Disaster_Relief\Disaster_Relief.csproj", "{C6D707EF-0F8F-48D2-9572-5CD3709B24DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_Unit_DisasterRelief", "Test_Unit_DisasterRelief\Test_Unit_DisasterRelief.csproj", "{6161713A-82EF-40E8-84D3-0FE7CB03AF5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6D707EF-0F8F-48D2-9572-5CD3709B24DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6D707EF-0F8F-48D2-9572-5CD3709B24DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6D707EF-0F8F-48D2-9572-5CD3709B24DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6D707EF-0F8F-48D2-9572-5CD3709B24DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6161713A-82EF-40E8-84D3-0FE7CB03AF5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6161713A-82EF-40E8-84D3-0FE7CB03AF5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6161713A-82EF-40E8-84D3-0FE7CB03AF5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6161713A-82EF-40E8-84D3-0FE7CB03AF5A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE06F84B-209F-4E58-B448-ACC5800B505E}
+	EndGlobalSection
+EndGlobal

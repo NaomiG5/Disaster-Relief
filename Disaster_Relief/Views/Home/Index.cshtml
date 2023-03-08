@@ -1,0 +1,182 @@
+﻿@model IEnumerable<Disaster_Relief.Models.Disaster>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    .hero-wrap {
+        width: 100%;
+        height: 100%;
+        position: inherit;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        position: relative;
+    }
+
+        .hero-wrap .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            content: '';
+            opacity: .3;
+            background: #f1453d;
+        }
+
+        .hero-wrap.hero-wrap-2 {
+            height: 100px;
+        }
+
+            .hero-wrap.hero-wrap-2 .slider-text {
+                height: 100px;
+            }
+
+                .hero-wrap.hero-wrap-2 .slider-text .bread {
+                    font-weight: 900;
+                    color: #983275;
+                }
+
+                .hero-wrap.hero-wrap-2 .slider-text .breadcrumbs {
+                    text-transform: uppercase;
+                    font-size: 13px;
+                    letter-spacing: 1px;
+                }
+
+                    .hero-wrap.hero-wrap-2 .slider-text .breadcrumbs span {
+                        color: #fff;
+                        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+                    }
+
+                        .hero-wrap.hero-wrap-2 .slider-text .breadcrumbs span a {
+                            color: #fff;
+                        }
+
+    p {
+        font-size: 20px;
+        padding: 40px;
+    }
+
+</style>
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/Images/BG Picture.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-2 bread" style="text-align:center;">Disaster Relief</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="text-center">
+    <p>
+        Welcome to Disaster Relief, we are a Non profit Organisation that helps with disasters all over the nation.
+        When a disaster is over the real struggle begins, large amounts of people could be left without housing
+        and any source of comfort. This is where you come in, you could help the people left with nothing.
+        Please donate anything that you can give, clothes, food, hygiene products etc.
+    </p>
+    <p>
+        Total number of goods donated: @ViewBag.gTotal
+        <br/>
+        <br/>
+        Total amount of money donated: @ViewBag.mTotal
+    </p>
+    <p>
+        Active disasters:
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.Label("Type")
+                </th>
+                <th>
+                    @Html.Label("Description")
+                </th>
+                <th>
+                    @Html.Label("Location")
+                </th>
+                <th>
+                    @Html.Label("Status")
+                </th>
+                <th>
+                    @Html.Label("Total Goods Allocated")
+                </th>
+                <th>
+                    @Html.Label("Total Money Allocated")
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+                    <td>
+                        @* @Html.DisplayFor(modelItem => item.Status)*@
+                        @if (item.SDate <= DateTime.Today && item.EDate >= DateTime.Today)
+                        {
+                            @Html.Label("Active")
+                        }
+                        else if (item.SDate > DateTime.Today)
+                        {
+                            @Html.Label("Upcomming")
+                        }
+                        else if (item.EDate < DateTime.Today)
+                        {
+                            @Html.Label("Passed")
+                        }
+                    </td>
+
+                    <td>
+                        
+                            @foreach (var goods in ViewBag.Goods)
+                            {
+                                @if (item.ID == goods.ID)
+                                {
+                                    <br/>
+                                        @Html.Label("Goods Description:") @goods.Description
+                                    <br/>
+
+                            
+                                }
+                            }
+                    </td>
+                    <td>
+                       
+                            @foreach (var mAllocated in ViewBag.Money)
+                            {
+                                if (item.ID == mAllocated.ID)
+                                {
+                                    <br />
+                                    @Html.Label("Donation Amount:") @mAllocated.Amount
+                                    <br />
+
+
+                                }
+                            }
+                   
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@if (@ViewBag.Message != null)
+{
+    <div style="border: 1px solid red">
+        @ViewBag.Message
+    </div>
+}
+

@@ -1,0 +1,129 @@
+﻿@model IEnumerable<Disaster_Relief.Models.Purchase>
+
+@{
+    ViewData["Title"] = "Purchase List";
+}
+<style>
+    a {
+        color: #da8601;
+        background-color: transparent;
+    }
+    /* Set a style for all buttons */
+    input {
+        background-color: #da8601;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 4px;
+    }
+    /*.form-control {
+        padding-left: 100px;
+        padding-right: 400px;
+        }*/
+    form {
+        padding-right: 100px;
+        padding-left: 100px;
+    }
+
+    .hero-wrap {
+        width: 100%;
+        height: 100%;
+        position: inherit;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        position: relative;
+    }
+
+        .hero-wrap .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            content: '';
+            opacity: .3;
+            background: #f1453d;
+        }
+
+        .hero-wrap.hero-wrap-2 {
+            height: 100px;
+        }
+
+            .hero-wrap.hero-wrap-2 .slider-text {
+                height: 100px;
+            }
+
+                .hero-wrap.hero-wrap-2 .slider-text .bread {
+                    font-weight: 900;
+                    color: #983275;
+                }
+
+                .hero-wrap.hero-wrap-2 .slider-text .breadcrumbs {
+                    text-transform: uppercase;
+                    font-size: 13px;
+                    letter-spacing: 1px;
+                }
+
+                    .hero-wrap.hero-wrap-2 .slider-text .breadcrumbs span {
+                        color: #fff;
+                        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+                    }
+
+                        .hero-wrap.hero-wrap-2 .slider-text .breadcrumbs span a {
+                            color: #fff;
+                        }
+
+</style>
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/Images/BG Picture.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-2 bread" style="text-align:center;">Purchases</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<p>
+    <a asp-action="Create">Purchase Goods</a>
+</p>
+<div class="form-group mb-2 bread " style="text-align:center ; font-size : 15px">
+
+    @Html.Label("Total Spent: ") @ViewBag.sTotal
+
+</div>
+<div class="form-group mb-2 bread " style="text-align:center ; font-size : 15px">
+
+    @Html.Label("Amount Left: ") @ViewBag.Left
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.Label("Amount Spent: ")
+
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmountSpent)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PurchaseID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.PurchaseID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PurchaseID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

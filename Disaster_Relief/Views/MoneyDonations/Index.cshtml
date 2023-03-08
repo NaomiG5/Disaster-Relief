@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Disaster_Relief.Models.MoneyDonations>
+
+@{
+    ViewData["Title"] = "Donation List";
+}
+<style>
+    a {
+        color: #da8601;
+        background-color: transparent;
+    }
+
+    .hero-wrap {
+        width: 100%;
+        height: 100%;
+        position: inherit;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        position: relative;
+    }
+
+        .hero-wrap .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            content: '';
+            opacity: .3;
+            background: #f1453d;
+        }
+
+        .hero-wrap.hero-wrap-2 {
+            height: 100px;
+        }
+
+            .hero-wrap.hero-wrap-2 .slider-text {
+                height: 100px;
+            }
+
+                .hero-wrap.hero-wrap-2 .slider-text .bread {
+                    font-weight: 900;
+                    color: #983275;
+                }
+
+                .hero-wrap.hero-wrap-2 .slider-text .breadcrumbs {
+                    text-transform: uppercase;
+                    font-size: 13px;
+                    letter-spacing: 1px;
+                }
+
+                    .hero-wrap.hero-wrap-2 .slider-text .breadcrumbs span {
+                        color: #fff;
+                        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+                    }
+
+                        .hero-wrap.hero-wrap-2 .slider-text .breadcrumbs span a {
+                            color: #fff;
+                        }
+
+</style>
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/Images/BG Picture.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-2 bread" style="text-align:center;">List Of Money Donations</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<p>
+    <a asp-action="Create">Donate</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.Label("Donor Name")
+                @*@Html.DisplayNameFor(model => model.DonationName)*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.Label("Donation Date")
+                @*@Html.DisplayNameFor(model => model.DonationDate)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonationName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonationDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.DonationID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.DonationID">View</a> |
+                    <a asp-action="Delete" asp-route-id="@item.DonationID">Delete</a>|
+                    <a asp-action="MAllocate" asp-route-id="@item.DonationID">Select</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    @ViewBag.Total
+</table>

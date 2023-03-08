@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Disaster Relief</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<style>
+    th {
+        background-color: #983275;
+        color: #da8601;
+    }
+</style>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #983275">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" style="color: #da8601" asp-controller="Home" asp-action="Index">Disaster Relief</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+
+                        <li class="nav-item">
+                            <a class="nav-link " style="color: #da8601" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: #da8601" asp-area="" asp-controller="Disasters" asp-action="DisasterL">Disaster List</a>
+                        </li>
+
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" style="color: #da8601" role="button" data-toggle="dropdown">Donate</a>
+                            <ul class="dropdown-menu nav-item" role="menu" style="background-color: #da8601">
+                                <li class="nav-item">
+                                    <a class="nav-link " style="color: #983275" asp-area="" asp-controller="GoodsDonations" asp-action="Index">Donate Goods</a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link " style="color: #983275"  asp-area="" asp-controller="MoneyDonations" asp-action="Index">Donate Money</a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" role="button" style="color: #da8601" data-toggle="dropdown">Allocated Donations</a>
+                            <ul class="dropdown-menu nav-item" role="menu" style="background-color: #da8601">
+                                <li class="nav-item">
+                                    <a class="nav-link" style="color: #983275" asp-area="" asp-controller="AllocatedGDonations" asp-action="Index">Allocated Goods</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" style="color: #983275" asp-area="" asp-controller="AllocatedMDonations" asp-action="Index">Allocated Money</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " style="color: #da8601" asp-area="" asp-controller="Purchases" asp-action="Index">Purchase</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav flex-grow-1 ">
+                        <li class="nav-item">
+                            <a class="nav-link " style="color: #da8601" asp-area="" asp-controller="Users" asp-action="Login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " style="color: #da8601" asp-area="" asp-controller="Users" asp-action="Create">Register</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <form style="padding:0px" asp-area="" asp-controller="Users" asp-action="LogOf">
+                                <button type="submit" class="nav-link btn btn-link" style="color: #da8601">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - Disaster_Relief - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
